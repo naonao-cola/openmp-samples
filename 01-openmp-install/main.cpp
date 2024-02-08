@@ -1,5 +1,13 @@
-#include <iostream>
+#include <stdio.h>
+#include <omp.h>
 
-int main(int, char**){
-    std::cout << "Hello, from 01!\n";
+int main() 
+{
+   #pragma omp parallel num_threads(4)
+   {
+      int i = omp_get_thread_num();
+      printf("Hello from thread %d\n", i);
+   }
+
+    return 0;
 }
