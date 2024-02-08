@@ -4,7 +4,7 @@ project(01 VERSION 0.1.0 LANGUAGES C CXX)
 include(CTest)
 enable_testing()
 
-find_package(OpenMP)
+find_package(OpenMP REQUIRED)
 
 add_executable(01 main.cpp)
 
