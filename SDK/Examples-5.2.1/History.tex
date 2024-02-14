@@ -1,0 +1,344 @@
+\cchapter{Document Revision History}{history}
+\label{chap:history}
+
+%=====================================
+\section{Changes from 5.2 to 5.2.1}
+\label{sec:history_52_to_521}
+
+\begin{itemize}
+\item General changes:
+\begin{itemize}
+\item Updated source metadata tags for all examples to use an improved form
+ (see \href{https://github.com/OpenMP/Examples/blob/v\VER/Contributions.md}%
+ {https://github.com/OpenMP/Examples/blob/v\VER/Contributions.md})
+\item Explicitly included the version tag \verlabel[pre\_]{3.0} in those 
+ examples that did not contain a version tag previously
+\end{itemize}
+
+\item Added the following examples for the 5.2 features:
+\begin{itemize}
+  \item \scode{uses_allocators} clause for the use of allocators in 
+  \code{target} regions (\specref{sec:allocators})
+\end{itemize}
+\item Added the following examples for the 5.1 features:
+\begin{itemize}
+  \item The \scode{inoutset} dependence type (\specref{subsec:task_concurrent_depend})
+  \item Atomic compare and capture (\specref{sec:cas})
+\end{itemize}
+\item Added the following examples for the 5.0 features:
+\begin{itemize}
+  \item \code{declare}~\code{target} directive with \scode{device_type(nohost)}
+     clause (\specref{subsec:declare_target_device_type})
+  \item \scode{omp_pause_resource} and \scode{omp_pause_resource_all}
+     routines (\specref{sec:pause_resource})
+\end{itemize}
+
+\item Miscellaneous fixes:
+\begin{itemize}
+\item Fixed an inconsistent use of mapper in \splc{Example target_mapper.3.f90}
+  (\specref{sec:declare_mapper})
+\item Fixed mismatched argument list in \splc{Example fort_sa_private.5.f}
+  (\specref{sec:fort_sa_private})
+\item Moved the placement of \code{declare}~\code{target}~\code{enter}
+  directive after function declaration
+  (\specref{subsec:target_task_reduction})
+\item Fixed an incorrect use of \scode{omp_in_parallel} routine in 
+  \splc{Example metadirective.4}
+  (\specref{sec:metadirective})
+\item Fixed an incorrect value for \code{at} clause
+  (\specref{subsec:error})
+\end{itemize}
+
+\end{itemize}
+
+%=====================================
+\section{Changes from 5.1 to 5.2}
+\label{sec:history_51_to_52}
+
+\begin{itemize}
+\item General changes:
+\begin{itemize}
+\item Included a description of the semantics for OpenMP directive syntax
+ (see \specref{chap:directive_syntax})
+\item Reorganized the Introduction Chapter and moved the Feature 
+Deprecation Chapter to Appendix~\ref{chap:deprecated_features}
+\item Included a list of examples that were updated for feature deprecation
+and replacement in each version (see Appendix~\ref{sec:Updated Examples})
+\item Added Index entries
+\end{itemize}
+
+\item Updated the examples for feature deprecation and replacement in OpenMP 5.2.
+See Table~\ref{tab:Deprecated Features} and 
+Table~\ref{tab:Updated Examples 5.2} for details.
+
+\item Added the following examples for the 5.2 features:
+\begin{itemize}
+  \item Mapping class objects with virtual functions
+     (\specref{sec:virtual_functions})
+  \item \scode{allocators} construct for Fortran \code{allocate} statement
+     (\specref{sec:allocators})
+  \item Behavior of reallocation of variables through OpenMP allocator in
+     Fortran (\specref{sec:allocators})
+\end{itemize}
+
+\item Added the following examples for the 5.1 features:
+\begin{itemize}
+  \item Clarification of optional \code{end} directive for strictly structured 
+      block in Fortran (\specref{sec:fortran_free_format_comments})
+  \item \scode{filter} clause on \scode{masked} construct (\specref{sec:masked})
+  \item \scode{omp_all_memory} reserved locator for specifying task dependences
+      (\specref{subsec:depend_undefer_task})
+  \item Behavior of Fortran allocatable variables in \code{target} regions
+      (\specref{sec:fort_allocatable_array_mapping})
+  \item Device memory routines in Fortran
+      (\specref{subsec:target_mem_and_device_ptrs})
+  \item Partial tiles from \scode{tile} construct
+      (\specref{sec:incomplete_tiles})
+  \item Fortran associate names and selectors in \code{target} region
+      (\specref{sec:associate_target})
+  \item \scode{allocate} directive for variable declarations and 
+      \scode{allocate} clause on \scode{task} constructs
+      (\specref{sec:allocators})
+  \item Controlling concurrency and reproducibility with \code{order} clause
+      (\specref{sec:reproducible_modifier})
+\end{itemize}
+
+\item Added other examples:
+\begin{itemize}
+  \item Using lambda expressions with \scode{target} constructs
+     (\specref{sec:lambda_expressions})
+  \item Target memory and device pointer routines
+     (\specref{subsec:target_mem_and_device_ptrs})
+  \item Examples to illustrate the ordering properties of 
+     the \plc{flush} operation (\specref{sec:mem_model})
+  \item User selector in the \code{metadirective} directive
+     (\specref{sec:metadirective})
+\end{itemize}
+
+\end{itemize}
+
+%=====================================
+\section{Changes from 5.0.1 to 5.1}
+\label{sec:history_501_to_51}
+
+\begin{itemize}
+\item General changes:
+\begin{itemize}
+  \item Replaced \code{master} construct example with equivalent \code{masked} construct example (\specref{sec:masked})
+  \item Primary thread is now used to describe thread number 0 in the current team
+  \item \code{primary} thread affinity policy is now used to specify that every 
+      thread in the team is assigned to the same place as the primary thread (\specref{subsec:affinity_primary})
+  \item The \scode{omp_lock_hint_*} constants have been renamed \scode{omp_sync_hint_*} (\specref{sec:critical}, \specref{sec:locks})
+\end{itemize}
+
+\item Added the following new chapters:
+\begin{itemize}
+  \item Deprecated Features (on page~\pageref{chap:deprecated_features})
+  \item Directive Syntax (\specref{chap:directive_syntax})
+  \item Loop Transformations (\specref{chap:loop_transformations})
+  \item OMPT Interface (\specref{chap:ompt_interface})
+\end{itemize}
+
+\item Added the following examples for the 5.1 features:
+\begin{itemize}
+  \item OpenMP directives in C++ \plc{attribute} specifiers
+    (\specref{sec:attributes})
+  \item Directive syntax adjustment to allow Fortran \code{BLOCK} ... 
+    \code{END}~\code{BLOCK} as a structured block 
+      (\specref{sec:fortran_free_format_comments})
+  \item \code{omp\_target\_is\_accessible} API routine
+      (\specref{sec:pointer_mapping})
+  \item Fortran allocatable array mapping in \code{target} regions (\specref{sec:fort_allocatable_array_mapping})
+  \item \code{begin}~\code{declare}~\code{target} (with
+        \code{end}~\code{declare}~\code{target}) directive
+      (\specref{subsec:declare_target_class})
+  \item \code{tile} construct             (\specref{sec:tile})
+  \item \code{unroll} construct           (\specref{sec:unroll})
+  \item Reduction with the \code{scope} construct
+      (\specref{subsec:reduction_scope})
+  \item  \code{metadirective} directive with dynamic \code{condition} selector
+      (\specref{sec:metadirective})
+  \item \code{interop} construct  (\specref{sec:interop})
+  \item Environment display with the \scode{omp_display_env} routine
+      (\specref{subsec:display_env})
+  \item \code{error} directive  (\specref{subsec:error})
+\end{itemize}
+
+\item Included additional examples for the 5.0 features:
+\begin{itemize}
+  \item \code{collapse} clause for non-rectangular loop nest
+      (\specref{sec:collapse})
+  \item \code{detach} clause for tasks (\specref{sec:task_detachment})
+  \item Pointer attachment for a structure member (\specref{sec:structure_mapping})
+  \item Host and device pointer association with the \scode{omp_target_associate_ptr} routine (\specref{sec:target_associate_ptr})
+  
+  \item Sample code on activating the tool interface 
+      (\specref{sec:ompt_start})
+\end{itemize}
+
+\item Added other examples:
+\begin{itemize}
+  \item The \scode{omp_get_wtime} routine (\specref{subsec:get_wtime})
+\end{itemize}
+\end{itemize}
+
+
+%=====================================
+\section{Changes from 5.0.0 to 5.0.1}
+\label{sec:history_50_to_501}
+
+\begin{itemize}
+\item Added version tags (\code{\small{}omp\_}\plc{x.y}) in example labels 
+and the corresponding source codes for all examples that feature
+OpenMP 3.0 and later. 
+
+\item Included additional examples for the 5.0 features:
+
+\begin{itemize}
+\item Extension to the \code{defaultmap} clause
+(\specref{sec:defaultmap})
+\item Transferring noncontiguous data with the \code{target}~\code{update} directive in Fortran (\specref{sec:array-shaping})
+\item \code{conditional} modifier for the \code{lastprivate} clause                             (\specref{sec:lastprivate})
+\item \code{task} modifier for the \code{reduction} clause                                      (\specref{subsec:task_reduction})
+\item Reduction on combined target constructs                                                     (\specref{subsec:target_reduction})
+\item Task reduction with \code{target} constructs 
+   (\specref{subsec:target_task_reduction})
+\item \code{scan} directive for returning the \emph{prefix sum} of a reduction                  (\specref{sec:scan})
+
+\end{itemize}
+
+\item Included additional examples for the 4.x features:
+
+\begin{itemize}
+\item Dependence for undeferred tasks
+(\specref{subsec:depend_undefer_task})
+\item \code{ref}, \code{val}, \code{uval} modifiers for \code{linear} clause (\specref{sec:linear_modifier})
+
+\end{itemize}
+
+\item Clarified the description of pointer mapping and pointer attachment in 
+\specref{sec:pointer_mapping}.
+\item Clarified the description of memory model examples
+in \specref{sec:mem_model}.
+
+\end{itemize}
+
+
+\section{Changes from 4.5.0 to 5.0.0}
+\label{sec:history_45_to_50}
+
+\begin{itemize}
+\item Added the following examples for the 5.0 features:
+
+\begin{itemize}
+\item Extended \code{teams} construct for host execution     (\specref{sec:host_teams})
+\item \code{loop} and \code{teams}~\code{loop} constructs specify loop iterations that can execute concurrently 
+                                                             (\specref{sec:loop})
+\item Task data affinity is indicated by \code{affinity} clause of \code{task} construct
+                                                             (\specref{sec: task_affinity})
+\item Display thread affinity with \code{OMP\_DISPLAY\_AFFINITY} environment variable or \code{omp\_display\_affinity()} API routine
+                                                             (\specref{sec:affinity_display})
+\item \code{taskwait} with dependences                       (\specref{subsec:taskwait_depend})
+\item \code{mutexinoutset} task dependences                  (\specref{subsec:task_dep_mutexinoutset})
+\item Multidependence Iterators (in \code{depend} clauses)   (\specref{subsec:depend_iterator})
+\item Combined constructs: \code{parallel}~\code{master}~\code{taskloop} and \code{parallel}~\code{master}~\code{taskloop}~\code{simd}
+                                                                                  (\specref{sec:parallel_masked_taskloop})
+\item Reverse Offload through \plc{ancestor} modifier of \code{device} clause.    (\specref{subsec:target_reverse_offload})
+\item Pointer Mapping  - behavior of mapped pointers                              (\specref{sec:pointer_mapping})   %Example_target_ptr_map*
+\item Structure Mapping  - behavior of mapped structures                          (\specref{sec:structure_mapping}) %Examples_target_structure_mapping.tex target_struct_map*
+\item Array Shaping with the \plc{shape-operator}                                 (\specref{sec:array-shaping})
+\item The \code{declare}~\code{mapper} directive                                  (\specref{sec:declare_mapper})
+\item Acquire and Release Semantics Synchronization: Memory ordering 
+      clauses \code{acquire}, \code{release}, and \code{acq\_rel} were added
+      to flush and atomic constructs
+                                                                                  (\specref{sec:acquire_and_release_semantics})
+\item \code{depobj} construct provides dependence objects for subsequent use in \code{depend} clauses
+                                                                                  (\specref{sec:depobj})
+\item \code{reduction} clause for \code{task} construct                           (\specref{subsec:task_reduction})
+\item \code{reduction} clause for \code{taskloop} construct                       (\specref{subsec:taskloop_reduction})
+\item \code{reduction} clause for \code{taskloop}~\code{simd} construct           (\specref{subsec:taskloop_reduction})
+\item Memory Allocators for making OpenMP memory requests with traits             (\specref{sec:allocators})
+\item \code{requires} directive specifies required features of implementation     (\specref{sec:requires})
+\item \code{declare}~\code{variant} directive - for function variants             (\specref{sec:declare_variant})
+\item \code{metadirective} directive  - for directive variants                    (\specref{sec:metadirective})
+\item \code{OMP\_TARGET\_OFFLOAD} Environment Variable  - controls offload behavior (\specref{sec:target_offload})
+\end{itemize}
+
+\item Included the following additional examples for the 4.x features:
+\begin{itemize}
+\item more taskloop examples (\specref{sec:taskloop})
+\item user-defined reduction (UDR) (\specref{subsec:UDR})
+%NEW 5.0
+%\item \code{target} \code{enter} and \code{exit} \code{data} unstructured data constructs  (\specref{sec:target_enter_exit_data}) %Example_target_unstructured_data.* ?
+
+\end{itemize}
+\end{itemize}
+
+\section{Changes from 4.0.2 to 4.5.0}
+\begin{itemize}
+\item Reorganized into chapters of major topics
+\item Included file extensions in example labels to indicate source type
+\item Applied the explicit \code{map(tofrom)} for scalar variables 
+      in a number of examples to comply with 
+      the change of the default behavior for scalar variables from 
+      \code{map(tofrom)} to \code{firstprivate} in the 4.5 specification
+\item Added the following new examples:
+
+\begin{itemize}
+\item \code{linear} clause in loop constructs     (\specref{sec:linear_in_loop})
+\item \code{priority} clause for \code{task} construct (\specref{sec:task_priority})
+\item \code{taskloop} construct                   (\specref{sec:taskloop})
+\item \plc{directive-name} modifier in multiple \code{if} clauses on
+a combined construct                              (\specref{subsec:target_if})
+\item unstructured data mapping                   (\specref{sec:target_enter_exit_data})
+\item \code{link} clause for \code{declare}~\code{target} directive 
+                                                  (\specref{subsec:declare_target_link})
+\item asynchronous target execution with \code{nowait} clause (\specref{sec:async_target_exec_depend})
+\item device memory routines and device pointers  (\specref{subsec:target_mem_and_device_ptrs})
+\item doacross loop nest                          (\specref{sec:doacross})
+\item locks with hints                            (\specref{sec:locks})
+\item C/C++ array reduction                       (\specref{subsec:reduction})
+\item C++ reference types in data sharing clauses (\specref{sec:cpp_reference})
+\end{itemize}
+
+\end{itemize}
+
+\section{Changes from 4.0.1 to 4.0.2}
+
+\begin{itemize}
+\item Names of examples were changed from numbers to mnemonics
+\item Added SIMD examples                         (\specref{sec:SIMD})
+\item Applied miscellaneous fixes in several source codes
+\item Added the revision history
+\end{itemize}
+
+\section{Changes from 4.0 to 4.0.1}
+
+Added the following new examples:
+\begin{itemize}
+\item the \code{proc\_bind} clause   (\specref{sec:affinity})
+\item the \code{taskgroup} construct (\specref{sec:taskgroup})
+\end{itemize}
+
+\section{Changes from 3.1 to 4.0}
+
+\begin{itemize}
+\item Beginning with OpenMP 4.0, examples were placed in a separate document
+      from the specification document.
+\item Version 4.0 added the following new examples:
+
+\begin{itemize}
+\item task dependences                       (\specref{sec:task_depend})
+\item \code{target} construct                (\specref{sec:target})
+\item array sections in device constructs    (\specref{sec:array_sections})
+\item \code{target}~\code{data} construct    (\specref{sec:target_data})
+\item \code{target}~\code{update} construct  (\specref{sec:target_update})
+\item \code{declare}~\code{target} directive (\specref{sec:declare_target})
+\item \code{teams} constructs                (\specref{sec:teams})
+\item asynchronous execution of a \code{target} region using tasks (\specref{subsec:async_target_with_tasks})
+\item device runtime routines                (\specref{sec:device})
+\item Fortran ASSOCIATE construct            (\specref{sec:associate})
+\item cancellation constructs                (\specref{sec:cancellation})
+\end{itemize}
+
+\end{itemize}
