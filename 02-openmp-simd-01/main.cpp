@@ -28,6 +28,7 @@ void star_no_omp( double *a, double *b, double *c, int n, int *ioff )
     for ( i = 0; i < n; i++ )
     {
         a[i] *= b[i] * c[i+ *ioff];
+        //printf("%d---%lf---%lf---%lf--------------------\n", i, a[i],b[i],c[i]);
     }
 }
 
@@ -74,6 +75,9 @@ int main(int, char**)
 
         //运算 no omp
         star_no_omp(a, b, c, n, &ioff);
+
+        //输出一个值
+        printf("%ld---%lf---%lf---%lf--------------------\n", i, a[128],b[128],c[128]);
     }  
 
     //停止计算时间
