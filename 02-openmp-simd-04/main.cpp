@@ -39,7 +39,7 @@ void fill_random_1d_real(int n, float *arr)
 
 int main(int, char**)
 {
-    printf("Hello, from SIMD.1c!\n");
+    printf("Hello, from SIMD.4c!\n");
 
     //获取cpu核心数量
     int num_procs = omp_get_num_procs();
