@@ -3,6 +3,8 @@ project(sum_optimize-1 VERSION 0.1.0 LANGUAGES C CXX)
 
 find_package(OpenMP REQUIRED)
 
-add_executable(sum_optimize-1 main.cpp)
+include_directories(TimeCompute)
+add_subdirectory(TimeCompute)
 
-target_link_libraries(sum_optimize-1 OpenMP::OpenMP_CXX)
+add_executable(sum_optimize-1 main.cpp)
+target_link_libraries(sum_optimize-1 OpenMP::OpenMP_CXX TimeCompute)
