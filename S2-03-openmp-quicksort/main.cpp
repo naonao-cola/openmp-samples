@@ -22,7 +22,7 @@ int main()
     p_SteadyClock->Init();
 
     // 创建数据源
-    long n = 100;
+    long n = 1e8;
     long *arr = (long*)malloc(sizeof(long)* n);
 
     // 初始化数据
@@ -32,22 +32,25 @@ int main()
     //omp_set_dynamic(0);             
 
     //Use N threads for all parallel regions
-    //omp_set_num_threads(16); 
+    omp_set_num_threads(8); 
 
     // clock start
     p_SteadyClock->Start();
 
-	quickSort(arr,0,n-1);
-
+    #pragma omp parallel
+    {
+        #pragma omp single
+	    quickSort(arr,0,n-1);
+    }
     // clock end
     p_SteadyClock->End();
     p_SteadyClock->Duration("quicksort one thread");
 
-    
+    /*
     for (long i = 0; i < n; i++)
         std::cout << arr[i] << " ";
     std::cout << std::endl;
-    
+    */
 
 	return 0;
 }
