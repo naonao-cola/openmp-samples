@@ -1,5 +1,7 @@
 #include <vector>
 #include <iostream>
+
+#include"SteadyClock.h"
  
 void merge(std::vector<int>& vec, int left, int mid, int right) {
     std::vector<int> temp(right - left + 1);
@@ -27,7 +29,13 @@ void mergeSort(std::vector<int>& vec, int left, int right) {
     }
 }
  
-int main() {
+int main() 
+{
+    // clock init
+    SteadyClock* p_SteadyClock = new SteadyClock();
+    p_SteadyClock->Init();
+
+    //数据源
     std::vector<int> data = {};
 
     for (size_t i = 0; i < 1e8; i++)
@@ -35,8 +43,14 @@ int main() {
         data.push_back(rand());
     }
     
+    // clock start
+    p_SteadyClock->Start();
 
     mergeSort(data, 0, data.size() - 1);
+
+    // clock end
+    p_SteadyClock->End();
+    p_SteadyClock->Duration("one thread");
  
     /*
     for(int num : data) 
@@ -44,6 +58,10 @@ int main() {
         std::cout << num << " ";
     }
     */
+
+   // clock release
+    p_SteadyClock->Release();
+    delete p_SteadyClock;
 
     return 0;
 }
