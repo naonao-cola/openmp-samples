@@ -1,33 +1,35 @@
 #include <iostream>
+#include"SteadyClock.h"
+
 using namespace std;
    
-int partition(int arr[], int low, int high) {
-    int pivot = arr[high];
-    int i = (low - 1);
+long partition(long arr[], long low, long high) {
+    long pivot = arr[high];
+    long i = (low - 1);
     
-    for (int j = low; j <= high - 1; j++) {
+    for (long j = low; j <= high - 1; j++) {
         if (arr[j] < pivot) {
             i++;
             
             // 交换 arr[i] 和 arr[j]
-            int temp = arr[i];
+            long temp = arr[i];
             arr[i] = arr[j];
             arr[j] = temp;
         }
     }
     
     // 将枢纽元素放置到正确的位置
-    int temp = arr[i + 1];
+    long temp = arr[i + 1];
     arr[i + 1] = arr[high];
     arr[high] = temp;
     
     return i + 1;
 }
  
-void quicksort(int arr[], int low, int high) {
+void quicksort(long arr[], long low, long high) {
     if (low < high) {
         // 获取分区后的枢纽位置
-        int pivot_index = partition(arr, low, high);
+        long pivot_index = partition(arr, low, high);
         
         // 分别对枢纽左右两边的子数组进行递归排序
         quicksort(arr, low, pivot_index - 1);
@@ -35,15 +37,45 @@ void quicksort(int arr[], int low, int high) {
     }
 }
 
-int main() {
-    int arr[] = {10, 7, 8, 9, 1, 5, 2, 7, 11, 18, 29, 33};
-    int n = sizeof(arr) / sizeof(arr[0]);
-    
+void fill_random_1d(long n, long *arr) 
+{
+    for (long i = 0; i < n; ++i) 
+    {
+        arr[i] = rand() % 10;
+    }
+}
+
+int main() 
+{
+    // clock init
+    SteadyClock* p_SteadyClock = new SteadyClock();
+    p_SteadyClock->Init();
+
+    // 创建数据源
+    long n = 1e6;
+    long *arr = (long*)malloc(sizeof(long)* n);
+
+    // 初始化数据
+    fill_random_1d(n, arr);
+        
+    // clock start
+    p_SteadyClock->Start();
+
     quicksort(arr, 0, n - 1);
+
+    // clock end
+    p_SteadyClock->End();
+    p_SteadyClock->Duration("quicksort one thread");
     
-    for (int i = 0; i < n; i++)
+    /*
+    for (long i = 0; i < n; i++)
         cout << arr[i] << " ";
     cout << endl;
-    
+    */
+   
+    // clock release
+    p_SteadyClock->Release();
+    delete p_SteadyClock;
+
     return 0;
 }
