@@ -48,7 +48,7 @@ int main()
     // clock end
     p_SteadyClock->End();
 
-    printf("%d num_threads", num_threads);
+    printf("%d num_threads ", num_threads);
     p_SteadyClock->Duration("quicksort ");
 
     // Check if the array is sorted

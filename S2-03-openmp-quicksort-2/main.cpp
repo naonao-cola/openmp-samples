@@ -58,6 +58,8 @@ int main()
     }
 
     double elapsed_time = omp_get_wtime() - start_time;
+
+    printf("%d num_threads ", num_threads);
     printf("Elapsed time: %f seconds\n", elapsed_time);
 
     // Check if the array is sorted
