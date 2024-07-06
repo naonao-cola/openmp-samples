@@ -39,7 +39,10 @@ void quicksort(int *array, int left, int right)
 
 int main()
 {
-    omp_set_num_threads(8); // set number of threads
+    //num_threads
+    int num_threads = 8;
+
+    omp_set_num_threads(num_threads); // set number of threads
 
     int *array = (int*)malloc(N * sizeof(int));
     for (int i = 0; i < N; i++)
@@ -60,6 +63,7 @@ int main()
     // Check if the array is sorted
     for (int i = 0; i < N - 1; i++)
     {
+        // printf("Array index: %d \n", i);
         if (array[i] > array[i + 1])
         {
             printf("Error: array is not sorted!\n");

@@ -28,11 +28,14 @@ int main()
     // 初始化数据
     fill_random_1d(n, arr);
 
+    //num_threads
+    int num_threads = 8;
+
     //Explicitly disable dynamic teams
     //omp_set_dynamic(0);             
 
     //Use N threads for all parallel regions
-    omp_set_num_threads(8); 
+    omp_set_num_threads(num_threads); 
 
     // clock start
     p_SteadyClock->Start();
@@ -44,13 +47,20 @@ int main()
     }
     // clock end
     p_SteadyClock->End();
-    p_SteadyClock->Duration("quicksort one thread");
 
-    /*
-    for (long i = 0; i < n; i++)
-        std::cout << arr[i] << " ";
-    std::cout << std::endl;
-    */
+    printf("%d num_threads", num_threads);
+    p_SteadyClock->Duration("quicksort ");
+
+    // Check if the array is sorted
+    for (int i = 0; i < n - 1; i++)
+    {
+        // printf("Array index: %d \n", i);
+        if (arr[i] > arr[i + 1])
+        {
+            printf("Error: arr is not sorted!\n");
+            return 1;
+        }
+    }
 
 	return 0;
 }
